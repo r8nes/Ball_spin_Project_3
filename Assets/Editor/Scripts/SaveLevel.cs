@@ -2,21 +2,24 @@ using System.Collections.Generic;
 using SpinProject.Data;
 using UnityEngine;
 
-public class SaveLevel
+namespace SpinProject.EditorTools
 {
-    public void Save(GameLevel gameLevel)
+    public class SaveLevel
     {
-        gameLevel.Blocks = new List<SceneObject>();
-        BaseObject[] baseBlocks = GameObject.FindObjectsOfType<BaseObject>();
-
-        foreach (var item in baseBlocks)
+        public void Save(GameLevelData gameLevel)
         {
-            SceneObject blockObject = new SceneObject
+            gameLevel.Blocks = new List<SceneObject>();
+            BaseObject[] baseBlocks = GameObject.FindObjectsOfType<BaseObject>();
+
+            foreach (var item in baseBlocks)
             {
-                Position = item.gameObject.transform.position,
-                Block = item.ObjectData,
-            };
-            gameLevel.Blocks.Add(blockObject);
+                SceneObject blockObject = new SceneObject
+                {
+                    Position = item.gameObject.transform.position,
+                    GameObject = item.ObjectData,
+                };
+                gameLevel.Blocks.Add(blockObject);
+            }
         }
     }
 }

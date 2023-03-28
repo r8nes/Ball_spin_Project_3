@@ -6,6 +6,6 @@ namespace SpinProject.Data
     public class SceneObject
     {
         public Vector3 Position;
-        public GameObjectData Block;
+        public GameObjectData GameObject;
     }
 }
