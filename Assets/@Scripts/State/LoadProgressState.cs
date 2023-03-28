@@ -1,11 +1,17 @@
-﻿using SpinPtoject.StateMachine;
+﻿using SpinPtoject.Service;
+using SpinPtoject.StateMachine;
 using UnityEngine;
 
 namespace SpinPtoject.State
 {
-    public class LoadProgressState : IState
+    public partial class LoadProgressState : IState
     {
+        private const string START_SCENE = "Menu";
+
         private readonly GameStateMachine _gameStateMachine;
+
+        //private readonly IProgressService _progressService;
+        //private readonly ISaveLoadService _saveLoadService;
 
         public LoadProgressState(GameStateMachine gameStateMachine)
         {

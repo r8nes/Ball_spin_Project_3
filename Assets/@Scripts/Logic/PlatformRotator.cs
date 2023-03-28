@@ -40,7 +40,7 @@ namespace SpinProject.Logic
 
                 _pressHoldTime += Time.deltaTime;
                 _pressHoldTime = Mathf.Clamp(_pressHoldTime, 0f, _maxPressHoldTime);
-                
+
                 return;
             }
 

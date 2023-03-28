@@ -21,7 +21,6 @@ namespace SpinPtoject.State
             GloabalRegisterService();
         }
 
-
         public void Enter() => _sceneLoader.Load(INITIAL_SCENE, onLoaded: EnterLoadLevel);
 
         private void GloabalRegisterService()
