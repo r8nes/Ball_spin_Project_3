@@ -1,8 +1,8 @@
-﻿using SpinPtoject.Service;
-using SpinPtoject.StateMachine;
-using SpinPtoject.Structure;
+﻿using SpinProject.Service;
+using SpinProject.StateMachine;
+using SpinProject.Structure;
 
-namespace SpinPtoject.State
+namespace SpinProject.State
 {
     public class BootstrapState : IState
     {

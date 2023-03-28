@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace SpinPtoject.Structure
+namespace SpinProject.Structure
 {
     public class SceneLoader
     {

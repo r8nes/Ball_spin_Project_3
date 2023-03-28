@@ -1,6 +1,6 @@
-﻿using SpinPtoject.State;
+﻿using SpinProject.State;
 
-namespace SpinPtoject.Service
+namespace SpinProject.Service
 {
     public interface IGameStateMachine : IService
     {

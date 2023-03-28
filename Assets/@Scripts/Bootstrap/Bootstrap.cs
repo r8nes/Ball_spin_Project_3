@@ -1,8 +1,8 @@
-using SpinPtoject.State;
-using SpinPtoject.StateMachine;
+using SpinProject.State;
+using SpinProject.StateMachine;
 using UnityEngine;
 
-namespace SpinPtoject.Structure
+namespace SpinProject.Structure
 {
     public class Bootstrap : MonoBehaviour, ICoroutineRunner
     {

@@ -1,7 +1,7 @@
-﻿using SpinPtoject.Service;
-using SpinPtoject.Structure;
+﻿using SpinProject.Service;
+using SpinProject.Structure;
 
-namespace SpinPtoject.StateMachine
+namespace SpinProject.StateMachine
 {
     public class StateMachineStarter
     {

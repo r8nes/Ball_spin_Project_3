@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace SpinPtoject.Data
+namespace SpinProject.Data
 {
     [CreateAssetMenu(fileName = "Level", menuName = "GameData/GameLevel")]
     public class GameLevel : ScriptableObject

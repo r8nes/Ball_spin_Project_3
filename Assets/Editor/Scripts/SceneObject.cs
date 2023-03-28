@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
-namespace SpinPtoject.Data
+namespace SpinProject.Data
 {
     [System.Serializable]
     public class SceneObject
     {
         public Vector3 Position;
-        public OblectData Block;
+        public GameObjectData Block;
     }
 }

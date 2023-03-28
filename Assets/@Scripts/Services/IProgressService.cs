@@ -1,4 +1,4 @@
-﻿namespace SpinPtoject.Service
+﻿namespace SpinProject.Service
 {
     public partial class LoadProgressState
     {

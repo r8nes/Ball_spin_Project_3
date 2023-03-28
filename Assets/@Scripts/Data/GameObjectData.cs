@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-namespace SpinPtoject.Data
+namespace SpinProject.Data
 {
     [CreateAssetMenu(fileName = "ObjectData", menuName = "GameData/ObjectData")]
-    public class OblectData : ScriptableObject
+    public class GameObjectData : ScriptableObject
     {
         public GameObject Prefab;
     }

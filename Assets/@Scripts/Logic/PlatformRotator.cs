@@ -1,8 +1,9 @@
+using SpinProject.Data;
 using UnityEngine;
 
 namespace SpinProject.Logic
 {
-    public class PlatformRotator : MonoBehaviour
+    public class PlatformRotator : BaseObject
     {
         [SerializeField] private float _rotateBy;
         [SerializeField] private float _minRotSpeed;

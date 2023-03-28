@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using SpinPtoject.Service;
-using SpinPtoject.State;
-using SpinPtoject.Structure;
+using SpinProject.Service;
+using SpinProject.State;
+using SpinProject.Structure;
 
-namespace SpinPtoject.StateMachine
+namespace SpinProject.StateMachine
 {
     public class GameStateMachine : IGameStateMachine
     {

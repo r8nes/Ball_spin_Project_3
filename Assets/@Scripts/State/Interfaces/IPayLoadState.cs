@@ -1,4 +1,4 @@
-﻿namespace SpinPtoject.State
+﻿namespace SpinProject.State
 {
     public interface IPayLoadState<TPayLoad> : IExitableState
     {

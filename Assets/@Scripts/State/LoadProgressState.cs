@@ -1,8 +1,8 @@
-﻿using SpinPtoject.Service;
-using SpinPtoject.StateMachine;
+﻿using SpinProject.Service;
+using SpinProject.StateMachine;
 using UnityEngine;
 
-namespace SpinPtoject.State
+namespace SpinProject.State
 {
     public partial class LoadProgressState : IState
     {

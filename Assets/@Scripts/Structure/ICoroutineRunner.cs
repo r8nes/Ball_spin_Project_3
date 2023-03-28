@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace SpinPtoject.Structure
+namespace SpinProject.Structure
 {
     public interface ICoroutineRunner
     {
