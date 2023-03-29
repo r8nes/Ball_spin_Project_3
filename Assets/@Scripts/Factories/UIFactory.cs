@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using SpinProject.Data;
 using SpinProject.Service;
 using UnityEngine;
@@ -33,12 +34,21 @@ namespace SpinProject.Factory
             return root;
         }
 
-        public void AddLevelPanel(Transform root)
+        public GameObject AddLevelPanel()
         {
             GameObject panel = _asset.Instantiate(AssetsPath.BUTTON_HUD_PATH);
-            panel.transform.SetParent(root);
+            
+            if (_uiRoot != null)
+            {
+                panel.transform.SetParent(_uiRoot);
+                panel.GetComponent<RectTransform>().offsetMax = Vector2.zero;
+            }
+            else
+            {
+                throw new Exception($"No root. Root is {_uiRoot}");
+            }
 
-            AddLevelsButtons(panel.transform);
+            return panel;
         }
 
         public void CreateWindowById(WindowId windowId)
@@ -70,7 +80,7 @@ namespace SpinProject.Factory
             }
         }
 
-        private void AddLevelsButtons(Transform parent)
+        public void AddLevelButtons(Transform parent, Action action)
         {
             LevelsData levelsData = new LevelsData();
             var levelsProgress = levelsData.GetLevelsProgress();
@@ -80,9 +90,10 @@ namespace SpinProject.Factory
                 GameObject button = _asset.Instantiate(AssetsPath.LEVEL_BUTTON_PATH);
                 button.transform.SetParent(parent);
 
-                if (button.gameObject.TryGetComponent(out LevelButton buttonLevel))
+                if (button.TryGetComponent(out LevelButton buttonLevel))
                 {
                     buttonLevel.SetData(levelsProgress.Levels[i], i);
+                    buttonLevel.OnLevelChoosed += action;
                 }
             }
         }

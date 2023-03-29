@@ -1,4 +1,5 @@
-﻿using SpinProject.Data;
+﻿using System;
+using SpinProject.Data;
 using SpinProject.Factory;
 using SpinProject.Service;
 using SpinProject.StateMachine;
@@ -34,7 +35,7 @@ namespace SpinProject.State
         {
             _loadingUI.HideLoader();
             _gameFactory.Cleanup();
-            _sceneLoader.Load(sceneName, OnLoaded);
+            _sceneLoader.Load(sceneName, OnLoadedLevels);
         }
 
         public void Exit()
@@ -42,11 +43,10 @@ namespace SpinProject.State
             _loadingUI.ShowLoader();
         }
 
-        private void OnLoaded()
+        private void OnLoadedLevels()
         {
-            var root = InitUIRoot();
-
-            InitLevelsPanel(root.transform);
+            InitUIRoot();
+            InitLevelsPanel();
             InformProgressReaders();
         }
 
@@ -76,9 +76,16 @@ namespace SpinProject.State
             return hud;
         }
 
-        private void InitLevelsPanel(Transform root) 
+        private void StartNewLevel() 
         {
-            _uiFactory.AddLevelPanel(root);
+            _sceneLoader.Load("Main", Exit);
+            _gameStateMachine.Enter<GameLoopState>();
+        }
+
+        private void InitLevelsPanel() 
+        {
+            var panel = _uiFactory.AddLevelPanel();
+            _uiFactory.AddLevelButtons(panel.transform, StartNewLevel);
         }
 
         private GameObject InitPlayer(LevelStaticData levelData)

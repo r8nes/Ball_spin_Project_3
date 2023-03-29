@@ -1,4 +1,5 @@
-﻿using SpinProject.Data;
+﻿using System;
+using SpinProject.Data;
 using UnityEngine;
 
 namespace SpinProject.Service
@@ -6,7 +7,8 @@ namespace SpinProject.Service
     public interface IUIFactory : IService
     {
         GameObject CreateUIRoot();
-        void AddLevelPanel(Transform root);
+        GameObject AddLevelPanel();
+        void AddLevelButtons(Transform parent, Action action);
         void CreateWindowById(WindowId windowId);
     }
 }
