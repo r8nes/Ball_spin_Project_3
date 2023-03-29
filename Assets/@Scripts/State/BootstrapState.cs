@@ -8,7 +8,7 @@ namespace SpinProject.State
 {
     public class BootstrapState : IState
     {
-        private const string INITIAL_SCENE = "Initial";
+        private const string INITIAL_SCENE = "Init";
 
         private readonly AllServices _services;
         private readonly SceneLoader _sceneLoader;
@@ -23,11 +23,7 @@ namespace SpinProject.State
             GloabalRegisterService();
         }
 
-        public void Enter()
-        {
-
-            _sceneLoader.Load(INITIAL_SCENE, onLoaded: EnterLoadLevel);
-        }
+        public void Enter() => _sceneLoader.Load(INITIAL_SCENE, onLoaded: EnterLoadLevel);
 
         public void Exit() { }
 
@@ -42,7 +38,6 @@ namespace SpinProject.State
             RegisterGameFactory();
             RegisterSaveLoadService();
         }
-
 
         private void EnterLoadLevel() => _stateMachine.Enter<LoadProgressState>();
 

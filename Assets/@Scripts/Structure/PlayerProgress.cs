@@ -6,6 +6,6 @@ namespace SpinProject.Service
     [Serializable]
     public class PlayerProgress
     {
-        public List<Progress> Levels = new List<Progress>();
+        public List<LevelInfo> Levels = new List<LevelInfo>();
     }
 }

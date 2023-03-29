@@ -32,9 +32,9 @@ namespace SpinProject.State
 
         public void Enter(string sceneName)
         {
+            _loadingUI.HideLoader();
             _gameFactory.Cleanup();
-            OnLoaded();
-           // _sceneLoader.Load(sceneName, OnLoaded);
+            _sceneLoader.Load(sceneName, OnLoaded);
         }
 
         public void Exit()
@@ -44,22 +44,23 @@ namespace SpinProject.State
 
         private void OnLoaded()
         {
-            InitUIRoot();
-            //InitGameWrold();
+            var root = InitUIRoot();
+
+            InitLevelsPanel(root.transform);
             InformProgressReaders();
         }
 
         private LevelStaticData GetLevelStaticData(int levelIndex)
         {
-
             LevelStaticData levelData = _dataService.ForLevel(levelIndex);
             return levelData;
         }
 
         #region Initials
-        private void InitUIRoot()
+        private GameObject InitUIRoot()
         {
-            _uiFactory.CreateUIRoot();
+            GameObject root = _uiFactory.CreateUIRoot();
+            return root;
         }
 
         private void InitGameWrold(int level)
@@ -72,16 +73,22 @@ namespace SpinProject.State
         private GameObject InitHud()
         {
             GameObject hud = _gameFactory.CreateHud();
-
-
             return hud;
         }
 
-        private GameObject InitPlayer(LevelStaticData levelData) => _gameFactory.CreatePlayer(levelData.InitialHeroPosition);
+        private void InitLevelsPanel(Transform root) 
+        {
+            _uiFactory.AddLevelPanel(root);
+        }
+
+        private GameObject InitPlayer(LevelStaticData levelData)
+        {
+            return _gameFactory.CreatePlayer(levelData.InitialHeroPosition);
+        }
 
         #endregion
 
-  
+
         private void InformProgressReaders()
         {
             foreach (ISavedProgressReader reader in _gameFactory.ProgressReader)

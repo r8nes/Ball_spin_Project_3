@@ -3,7 +3,7 @@
 namespace SpinProject.Service
 {
     [Serializable]
-    public class Progress
+    public class LevelInfo
     {
         public bool IsOpened;
     }

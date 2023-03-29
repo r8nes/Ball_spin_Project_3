@@ -2,14 +2,11 @@
 
 namespace SpinProject.Data
 {
-    public class LevelIndex
+    public class LevelIndex 
     {
         private const string KeyName = "Index";
 
-        public void SetIndex(int index)
-        {
-            PlayerPrefs.SetInt(KeyName, index);
-        }
+        public void SetIndex(int index) => PlayerPrefs.SetInt(KeyName, index);
 
         public int GetIndex()
         {
@@ -21,10 +18,6 @@ namespace SpinProject.Data
             return index;
         }
 
-        public void Clear()
-        {
-            PlayerPrefs.DeleteKey(KeyName);
-        }
+        public void Clear() => PlayerPrefs.DeleteKey(KeyName);
     }
-
 }

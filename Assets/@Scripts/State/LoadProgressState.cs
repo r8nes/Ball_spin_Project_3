@@ -1,12 +1,11 @@
 ﻿using SpinProject.Service;
 using SpinProject.StateMachine;
-using UnityEngine;
 
 namespace SpinProject.State
 {
     public partial class LoadProgressState : IState
     {
-        private const string START_SCENE = "Menu";
+        private const string LEVEL_SCENE = "Levels";
 
         private readonly GameStateMachine _gameStateMachine;
 
@@ -20,10 +19,24 @@ namespace SpinProject.State
             _progressService = progressService;
         }
 
-        public void Enter() => LoadProgressOrInitNew();
+        public void Enter()
+        {
+            LoadProgressOrInitNew();
+            _gameStateMachine.Enter<LoadLevelState, string>(LEVEL_SCENE);
+        }
 
         public void Exit() { }
 
-        private void LoadProgressOrInitNew() => Debug.Log("Load");
+        private void LoadProgressOrInitNew() =>
+          _progressService.Progress =
+          _saveLoadService.LoadProgress()
+          ?? NewProgress();
+
+        private PlayerProgress NewProgress()
+        {
+            var progress = new PlayerProgress();
+
+            return progress;
+        }
     }
 }

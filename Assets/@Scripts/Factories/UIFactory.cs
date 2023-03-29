@@ -2,13 +2,12 @@
 using SpinProject.Data;
 using SpinProject.Service;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace SpinProject.Factory
 {
     public class UIFactory : IUIFactory
     {
-        private const string UI_ROOT_PATH = "UI/UIRoot";
-
         private Transform _uiRoot;
 
         private readonly IAssetsProvider _asset;
@@ -26,10 +25,20 @@ namespace SpinProject.Factory
             _progressService = progressService;
         }
 
-        public void CreateUIRoot()
+        public GameObject CreateUIRoot()
         {
-            GameObject root = _asset.Instantiate(UI_ROOT_PATH);
+            GameObject root = _asset.Instantiate(AssetsPath.GLOBAL_HUD_PATH);
             _uiRoot = root.transform;
+
+            return root;
+        }
+
+        public void AddLevelPanel(Transform root)
+        {
+            GameObject panel = _asset.Instantiate(AssetsPath.BUTTON_HUD_PATH);
+            panel.transform.SetParent(root);
+
+            AddLevelsButtons(panel.transform);
         }
 
         public void CreateWindowById(WindowId windowId)
@@ -57,6 +66,23 @@ namespace SpinProject.Factory
                 {
                     OpenWindows[i].WindowClosed -= OnWindowClosed;
                     OpenWindows.Remove(OpenWindows[i]);
+                }
+            }
+        }
+
+        private void AddLevelsButtons(Transform parent)
+        {
+            LevelsData levelsData = new LevelsData();
+            var levelsProgress = levelsData.GetLevelsProgress();
+
+            for (int i = 0; i < levelsProgress.Levels.Count; i++)
+            {
+                GameObject button = _asset.Instantiate(AssetsPath.LEVEL_BUTTON_PATH);
+                button.transform.SetParent(parent);
+
+                if (button.gameObject.TryGetComponent(out LevelButton buttonLevel))
+                {
+                    buttonLevel.SetData(levelsProgress.Levels[i], i);
                 }
             }
         }

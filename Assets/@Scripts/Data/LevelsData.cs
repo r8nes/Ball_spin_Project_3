@@ -14,7 +14,7 @@ namespace SpinProject.Data
 
             for (int i = 0; i < levelsCount; i++)
             {
-                _levelsProgress.Levels.Add(new Progress());
+                _levelsProgress.Levels.Add(new LevelInfo());
             }
             _levelsProgress.Levels[0].IsOpened = true;
 
@@ -37,7 +37,7 @@ namespace SpinProject.Data
             return _levelsProgress;
         }
 
-        public void SaveLevelData(int index, Progress progress)
+        public void SaveLevelData(int index, LevelInfo progress)
         {
             _levelsProgress = GetLevelsProgress();
             _levelsProgress.Levels[index] = progress;
