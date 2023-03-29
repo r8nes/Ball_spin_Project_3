@@ -12,5 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b904616940e270248815f5f96f46e02f, type: 3}
   m_Name: Level5
   m_EditorClassIdentifier: 
-  Blocks: []
-  BackGround: {fileID: 0}
+  Blocks:
+  - Position: {x: 1, y: 3, z: 0}
+    GameObject: {fileID: 11400000, guid: 7c04a8c8b263aa54586cf55acbbf203c, type: 2}
+  - Position: {x: -1.5, y: -1.75, z: 0}
+    GameObject: {fileID: 11400000, guid: 9401b366ca51403458daec599aa7528c, type: 2}
+  - Position: {x: 1, y: -1.75, z: 0}
+    GameObject: {fileID: 11400000, guid: 9401b366ca51403458daec599aa7528c, type: 2}
+  - Position: {x: 1, y: -2.75, z: 0}
+    GameObject: {fileID: 11400000, guid: 9401b366ca51403458daec599aa7528c, type: 2}
+  - Position: {x: 1, y: -0.75, z: 0}
+    GameObject: {fileID: 11400000, guid: 9401b366ca51403458daec599aa7528c, type: 2}
+  BackGround: {fileID: 5136199020975286519, guid: c902e08bd83e04947b6e8d7f31f385be, type: 3}

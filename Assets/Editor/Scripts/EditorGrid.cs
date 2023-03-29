@@ -4,20 +4,22 @@ namespace SpinProject.EditorTools
 {
     public class EditorGrid
     {
-        private const float _leftPosition = -4.5f;
-        private const float _upPosition = 9.25f;
-        private const int _columnCount = 10;
-        private const int _lineCount = 20;
-        private const float _offsetDown = 0.5f;
-        private const float _offsetRight = 1f;
+        private readonly int _lineCount = 10;
+        private readonly int _columnCount = 20;
+
+        private readonly float _leftPosition = -10f;
+        private readonly float _upPosition = 6f;
+
+        private readonly float _offsetDown = 0.5f;
+        private readonly float _offsetRight = 1f;
 
         public Vector3 CheckPosition(Vector3 position)
         {
-
             float tempX = 0;
             float tempY = 0;
-            float x = _leftPosition - _offsetRight / 2;
-            float y = _upPosition + _offsetDown / 2;
+
+            float x = (_leftPosition - _offsetRight) / 2;
+            float y = (_upPosition + _offsetDown) / 2;
 
             if (position.x > x && position.x < (x + _offsetRight * _columnCount) &&
                 position.y < y && position.y > (y - _offsetDown * _lineCount))
@@ -51,6 +53,7 @@ namespace SpinProject.EditorTools
             {
                 Debug.LogWarning("Out of play zone");
             }
+
             return new Vector3(tempX, tempY);
         }
     }

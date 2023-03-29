@@ -6,10 +6,9 @@ namespace SpinProject.EditorTools
 {
     public class SceneEditor : EditorWindow
     {
-        private readonly EditorGrid _grid = new EditorGrid();
-
-        private LevelEditor _levelEditor;
+        private EditorGrid _grid = new EditorGrid();
         private Transform _parent;
+        private LevelEditor _levelEditor;
 
         public void SetLevelEditor(LevelEditor levelEditor, Transform parent)
         {

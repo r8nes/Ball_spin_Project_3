@@ -119,6 +119,8 @@ public class LevelEditor : EditorWindow
             if (GUILayout.Button("Load Level"))
             {
                 FindObjectOfType<ClearLevel>().Clear();
+                ObjectGeneration objectGenerator = new ObjectGeneration();
+                objectGenerator.Generate(_gameLevel, _parent);
             }
             GUILayout.EndHorizontal();
         }

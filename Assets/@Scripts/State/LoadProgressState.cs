@@ -10,12 +10,14 @@ namespace SpinProject.State
 
         private readonly GameStateMachine _gameStateMachine;
 
-        //private readonly IProgressService _progressService;
-        //private readonly ISaveLoadService _saveLoadService;
+        private readonly IProgressService _progressService;
+        private readonly ISaveLoadService _saveLoadService;
 
-        public LoadProgressState(GameStateMachine gameStateMachine)
+        public LoadProgressState(GameStateMachine gameStateMachine, ISaveLoadService saveLoadService, IProgressService progressService)
         {
             _gameStateMachine = gameStateMachine;
+            _saveLoadService = saveLoadService;
+            _progressService = progressService;
         }
 
         public void Enter() => LoadProgressOrInitNew();

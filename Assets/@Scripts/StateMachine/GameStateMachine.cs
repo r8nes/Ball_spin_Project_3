@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SpinProject.Factory;
 using SpinProject.Service;
 using SpinProject.State;
 using SpinProject.Structure;
@@ -20,6 +21,20 @@ namespace SpinProject.StateMachine
                 this,
                 sceneLoader,
                 services),
+
+                [typeof(LoadLevelState)] = new LoadLevelState(
+                this,
+                sceneLoader,
+                loadingUi,
+                services.Single<IGameFactory>(),
+                services.Single<IStaticDataService>(),
+                services.Single<IProgressService>(),
+                 services.Single<IUIFactory>()),
+
+                [typeof(LoadProgressState)] = new LoadProgressState(
+                this,
+                services.Single<ISaveLoadService>(),
+                services.Single<IProgressService>()),
             };
         }
 

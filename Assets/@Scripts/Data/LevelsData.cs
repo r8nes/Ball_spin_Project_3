@@ -3,18 +3,10 @@ using UnityEngine;
 
 namespace SpinProject.Data
 {
-    public class LevelsData
+    public class LevelsData : ISaveLoadService
     {
         private const string KeyName = "Save";
         private PlayerProgress _levelsProgress = new PlayerProgress();
-
-        private void SaveData()
-        {
-            string saveJson = JsonUtility.ToJson(_levelsProgress);
-
-            PlayerPrefs.SetString(KeyName, saveJson);
-            PlayerPrefs.Save();
-        }
 
         public void NewData()
         {
@@ -26,7 +18,7 @@ namespace SpinProject.Data
             }
             _levelsProgress.Levels[0].IsOpened = true;
 
-            SaveData();
+            SaveProgress();
             Resources.UnloadUnusedAssets();
         }
 
@@ -54,9 +46,32 @@ namespace SpinProject.Data
             {
                 _levelsProgress.Levels[index + 1].IsOpened = true;
             }
-            SaveData();
+
+            SaveProgress();
         }
 
+        public void SaveProgress()
+        {
+            string saveJson = JsonUtility.ToJson(_levelsProgress);
+
+            PlayerPrefs.SetString(KeyName, saveJson);
+            PlayerPrefs.Save();
+        }
+
+        public PlayerProgress LoadProgress()
+        {
+            if (PlayerPrefs.HasKey(KeyName))
+            {
+                string saveJson = PlayerPrefs.GetString(KeyName);
+                _levelsProgress = JsonUtility.FromJson<PlayerProgress>(saveJson);
+            }
+            else
+            {
+                NewData();
+            }
+
+            return _levelsProgress;
+        }
         public void Clear() => PlayerPrefs.DeleteKey(KeyName);
     }
 }

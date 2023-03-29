@@ -15,3 +15,5 @@ MonoBehaviour:
   BlockDatas:
   - Texture2D: {fileID: 2800000, guid: 0304baf8d224f3e47b22d872c8dcd412, type: 3}
     ObjectData: {fileID: 11400000, guid: 9401b366ca51403458daec599aa7528c, type: 2}
+  - Texture2D: {fileID: 2800000, guid: ef9977ed07c438845a52c577f4ffcc3a, type: 3}
+    ObjectData: {fileID: 11400000, guid: 7c04a8c8b263aa54586cf55acbbf203c, type: 2}
